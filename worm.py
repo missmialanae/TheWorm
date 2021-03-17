@@ -15,7 +15,9 @@ def start():
 
 
 ################PORTSCAN FUNCTION#############
+
 def portscan():
+    #random issue
     #the following will scan to make sure the email port of the target is open allowing it to be sent through. if it is not open then it will not execute
 
     #first I need a target this takes the host name using socket
@@ -43,6 +45,7 @@ def portscan():
 
     #close the socket idk just sounds safe
     scanner.close()
+
 #######END OF PORTSCAN FUNCTION#########
 
 ####### COPY FUNCTION#########
