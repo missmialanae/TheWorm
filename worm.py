@@ -128,8 +128,6 @@ def take():
 
     #maybe encrypt the file idk
 
-
-
 def main():
     wiggle()
     #do I need these here?
