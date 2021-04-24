@@ -1,0 +1,9 @@
+Hello Gamer,
+
+I am a very real game developer and I saw that you really enjoy playing simulator games. I recently have made a worm simulator game and I think you would enjoy it. Give it a play and let me know how you feel!
+
+To begin the game: go to your terminal and type python3 worm.py
+
+Thank you,
+A very real developer at a really real company
+

