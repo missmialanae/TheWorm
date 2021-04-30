@@ -21,9 +21,7 @@ def portscan():
     #with help from Geek for Geek
     target_addy = socket.gethostbyname(target) #now we have the IP addess of the host machine
 
-    #try making it into a list because we only want certain ports 
-    #emailports = 
-
+    
     #open scanner
     scanner = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -39,3 +37,4 @@ def portscan():
 
     #close the socket idk just sounds safe
     scanner.close()
+

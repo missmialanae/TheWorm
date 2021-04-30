@@ -6,4 +6,3 @@ To begin the game: go to your terminal and type python3 worm.py
 
 Thank you,
 A very real developer at a really real company
-
